@@ -1,0 +1,40 @@
+1. Implementing RSA encryption in Python
+RSA
+The RSA Cryptosystem was publicly proposed by Ron Rivest, Adi Shamir and Len Adleman A method for obtaining digital signatures and public-key cryptosystems.
+
+Suggested reading: Twenty years of attacks on the RSA cryptosystem
+
+RSA key generation
+
+Generate two random primes p and q
+Generate a public exponent, e (often e=65537)
+Set n=pq
+The public key is the pair n,e
+Set ϕ(n)=(p−1)(q−1)
+Set d=e−1modϕ(n)
+The private key is d
+
+“textbook” RSA encryption
+
+Warning the simplified, “textbook,” RSA encryption used in this module is insecure and should not be used in practice!
+1.To encrypt a message m (where m is an integer in the range 0<m<n)
+2.Set c=m^e mod n
+3. Output the ciphertext c
+
+“textbook” RSA decryption
+
+Given a ciphertext, c, set m=c^d mod n
+
+“textbook” RSA in Python
+
+Using the the template provided (“rsa.py”) implement the “textbook” RSA algorithm described above.
+We “rsa_util” file contains two functions is_prime and mod_inverse that will be useful in your code.
+Your code should have three functions:
+
+1.RSAKeygen – Takes as input a bit length, bitlen, and generates two primes of length bitlen, and outputs a pair, [n,d]
+2.RSAEncrypt – Takes as input a public key, m and a message m and outputs a ciphertext c=m^e mod n. You may assume that m is an integer with m<n
+3.RSADecrypt – Takes as input a public key, n, a private key d and a ciphertext c and outputs m=c^d mod n
+Use random.SystemRandom() to generate random numbers.
+a = random.SystemRandom().randint(5,10) #Generates a random integer between 5 and 10
+
+It is important that you keep the filename (“rsa.py”) and that your function names match those above.
